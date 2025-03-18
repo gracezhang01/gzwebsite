@@ -1,0 +1,813 @@
+/* Base styles */
+:root {
+    --text-color: #111;
+    --background-color: #fff;
+    --accent-color: #555;
+    --light-gray: #f5f5f5;
+    --medium-gray: #888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/* Header styles */
+header {
+    margin-bottom: 80px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.intro {
+    font-size: 1.25rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.profile-image {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+/* Resume button */
+.resume-button {
+    display: inline-block;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: fit-content;
+    margin: 0;
+}
+
+.resume-button:hover {
+    opacity: 1;
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.resume-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+    
+    .social-links {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+    
+    .header-content {
+        flex-direction: column;
+    }
+    
+    .profile-image {
+        width: 100%;
+        height: auto;
+        max-width: 250px;
+        margin: 0 auto 2rem;
+    }
+    
+    .header-info {
+        gap: 1rem;
+    }
+}
+
+/* Section header styling with animation */
+.section {
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 50px;
+    scroll-margin-top: 20px;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Underline beneath the section title */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #888;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animation for section in view */
+.section.in-view .section-title {
+    font-size: 1.4rem;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+.section.in-view .section-title::after {
+    background-color: #333;
+    width: 120%;
+}
+
+/* Add JavaScript to detect when sections are in view */
+
+.project, .job, .education-section, .skill-category, .contact-section {
+    margin-bottom: 1.5rem;
+}
+
+.section > *:last-child {
+    margin-bottom: 0;
+}
+
+.company {
+    color: var(--medium-gray);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+/* Contact section */
+.email-link {
+    display: inline-block;
+    font-weight: 500;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 2px;
+}
+
+/* Skills section */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.skills-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Colorful text animation */
+.colorful-text {
+    display: inline-block;
+    font-weight: 500;
+    background: linear-gradient(
+        90deg,
+        #ff0000, #ff9900, #33cc33, #3399ff, #cc33ff, #ff0066
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 8s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Add a subtle entrance animation */
+.colorful-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards, rainbow 8s linear infinite 1s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated Hi! text */
+.animated-hi {
+    font-size: 1.5em;
+    display: inline-block;
+    background: linear-gradient(
+        45deg,
+        #FF5757, #FF914D, #FFDE59, #A8FF6B, #5CE1E6, #7C4DFF, #FF00C7
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientWave 3s ease-in-out infinite, popIn 1s ease-out;
+    position: relative;
+}
+
+@keyframes gradientWave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Add a subtle hover effect */
+.animated-hi:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(10deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+}
+
+/* Skills & Coursework Section */
+.two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.column-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Skills styling */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.skill-category h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent-color);
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.skills-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Education and coursework styling */
+.education-section {
+    margin-bottom: 2rem;
+}
+
+.education-section h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.education-program {
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+}
+
+.course-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.course-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.course-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Project with video link styling */
+.project-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.video-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    position: relative;
+    transition: transform 0.2s ease;
+    margin-top: -2px;
+}
+
+.video-link svg {
+    vertical-align: middle;
+}
+
+.video-link:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.video-link .tooltip {
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.video-link:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Add a small triangle at the bottom of the tooltip */
+.video-link .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--text-color) transparent transparent transparent;
+}
+
+/* Tech tags styling */
+.tech-tags {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* Updated project header styling */
+.project-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.project-header h4 {
+    margin-bottom: 0;
+}
+
+/* Title with icon styling */
+.title-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive adjustments for project headers */
+@media (max-width: 768px) {
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .tech-tags {
+        margin-left: 0;
+    }
+}
+
+/* Animated name styling */
+.animated-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.name-letter {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animated-name:hover .name-letter {
+    color: #333;
+}
+
+/* Create a staggered hover effect for each letter */
+.animated-name:hover .name-letter:nth-child(1) { transform: translateY(-8px); color: #FF5757; transition-delay: 0.02s; }
+.animated-name:hover .name-letter:nth-child(2) { transform: translateY(-8px); color: #FF914D; transition-delay: 0.04s; }
+.animated-name:hover .name-letter:nth-child(3) { transform: translateY(-8px); color: #FFDE59; transition-delay: 0.06s; }
+.animated-name:hover .name-letter:nth-child(4) { transform: translateY(-8px); color: #A8FF6B; transition-delay: 0.08s; }
+.animated-name:hover .name-letter:nth-child(5) { transform: translateY(-8px); color: #5CE1E6; transition-delay: 0.10s; }
+.animated-name:hover .name-letter:nth-child(6) { transform: translateY(-8px); transition-delay: 0.12s; }
+.animated-name:hover .name-letter:nth-child(7) { transform: translateY(-8px); color: #7C4DFF; transition-delay: 0.14s; }
+.animated-name:hover .name-letter:nth-child(8) { transform: translateY(-8px); color: #FF00C7; transition-delay: 0.16s; }
+.animated-name:hover .name-letter:nth-child(9) { transform: translateY(-8px); color: #FF5757; transition-delay: 0.18s; }
+.animated-name:hover .name-letter:nth-child(10) { transform: translateY(-8px); color: #FF914D; transition-delay: 0.20s; }
+.animated-name:hover .name-letter:nth-child(11) { transform: translateY(-8px); color: #FFDE59; transition-delay: 0.22s; }
+
+/* Add a subtle underline animation */
+.animated-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF5757, #FF914D, #FFDE59, #A8FF6B, #5CE1E6, #7C4DFF, #FF00C7);
+    transition: width 0.5s ease;
+}
+
+.animated-name:hover::after {
+    width: 100%;
+}
+
+/* Section dividers */
+.section-title {
+    position: relative;
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(0,0,0,0.05) 0%, 
+        rgba(0,0,0,0.15) 50%, 
+        rgba(0,0,0,0.05) 100%);
+}
+
+/* Add a subtle dot pattern to the first section divider */
+.section:first-of-type .section-title::before {
+    background-image: linear-gradient(90deg, 
+        rgba(0,0,0,0.15) 0%, 
+        rgba(0,0,0,0.15) 50%, 
+        rgba(0,0,0,0.05) 100%),
+        radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size: 100% 1px, 10px 10px;
+}
+
+/* Ensure the last section has proper bottom spacing */
+.section:last-of-type {
+    margin-bottom: 50px;
+}
+
+/* Reduce spacing between Projects and Experience sections specifically */
+#projects {
+    margin-bottom: 30px; /* Reduced margin at the bottom of Projects section */
+}
+
+#experience {
+    padding-top: 10px; /* Reduced padding at the top of Experience section */
+}
+
+/* If you want to target all sections but maintain special spacing between these two */
+.section {
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* Override for specific sections */
+#projects.section {
+    margin-bottom: 30px; /* Smaller margin for projects */
+}
+
+#experience.section {
+    padding-top: 10px; /* Smaller padding for experience */
+}
+
+/* Publications section styling */
+.publication {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.publication:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.publication-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.publication-authors {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.publication-venue {
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+}
+
+.publication-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.publication-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.publication-links a:hover {
+    background-color: #e5e5e5;
+    opacity: 1;
+}
+
+.publication-links svg {
+    opacity: 0.7;
+}
+
+/* Adjust spacing between Experience and Publications */
+#experience.section {
+    margin-bottom: 30px; /* Reduced margin to bring Publications closer */
+}
+
+#publications.section {
+    padding-top: 10px; /* Reduced padding to bring Publications closer to Experience */
+}
+
+/* Subtle tagline style with Tektur font */
+.subtle-tagline {
+    display: inline-block;
+    color: #999;
+    font-family: 'Tektur', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    position: relative;
+    margin-top: 5px;
+    text-transform: lowercase; /* Optional: gives it a more distinctive look */
+}
+
+/* Remove the previous colorful animation for this element */
+.subtle-tagline {
+    animation: none;
+    opacity: 1;
+    transform: none;
+}
+
+/* Ensure tagline has no link styling */
+.title, .intro, .subtle-tagline {
+    cursor: default;
+    text-decoration: none;
+    pointer-events: none; /* This prevents any click interactions */
+}
